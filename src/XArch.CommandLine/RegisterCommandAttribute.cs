@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace XArch.PlatformManagement.CommandLine
+namespace XArch.CommandLine
 {
 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]

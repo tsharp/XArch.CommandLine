@@ -3,7 +3,7 @@ using System.CommandLine;
 using System.CommandLine.Parsing;
 using System.Threading.Tasks;
 
-namespace XArch.PlatformManagement.CommandLine
+namespace XArch.CommandLine
 {
     internal sealed class CommandRuntime : ICommandRuntime
     {

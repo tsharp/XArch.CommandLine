@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace XArch.PlatformManagement.CommandLine
+namespace XArch.CommandLine
 {
     internal sealed class CommandContextDataProvider : ICommandContextDataProvider
     {

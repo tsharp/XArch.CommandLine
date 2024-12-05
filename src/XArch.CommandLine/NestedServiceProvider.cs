@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace XArch.PlatformManagement.CommandLine
+namespace XArch.CommandLine
 {
     internal sealed class NestedServiceProvider : IServiceProvider
     {
@@ -15,8 +15,8 @@ namespace XArch.PlatformManagement.CommandLine
 
         public object GetService(Type serviceType)
         {
-            return this.serviceProvider.GetService(serviceType) ?? 
-                this.parentServiceProvider.GetService(serviceType);
+            return serviceProvider.GetService(serviceType) ??
+                parentServiceProvider.GetService(serviceType);
         }
     }
 }

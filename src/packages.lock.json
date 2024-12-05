@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dependencies": {
+    ".NETFramework,Version=v4.5": {
+      "Microsoft.Build.Artifacts": {
+        "type": "Direct",
+        "requested": "[6.1.10, )",
+        "resolved": "6.1.10",
+        "contentHash": "7B6h7yAZ6RD4osQSaIUnmMZ96RXPHUzyCrK/kAYQjyTO2i71LjOAdR0HjSus7HRwYhi94f2iZ+f0qMO9b2ykkQ=="
+      }
+    }
+  }
+}

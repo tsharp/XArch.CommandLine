@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.Build.Traversal">
   <ItemGroup>
     <!-- Other Project Files to Include in Build -->
-    <ProjectFile Include="XArch.PlatformManagement.CommandLine\XArch.PlatformManagement.CommandLine.csproj" />
-    <ProjectFile Include="XArch.PlatformManagement.CommandLine.Sample\XArch.PlatformManagement.CommandLine.Sample.csproj" />
+    <ProjectFile Include="XArch.CommandLine\XArch.CommandLine.csproj" />
+    <ProjectFile Include="XArch.CommandLine.Sample\XArch.CommandLine.Sample.csproj" />
   </ItemGroup>
 </Project>

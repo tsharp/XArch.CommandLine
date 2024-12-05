@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace XArch.PlatformManagement.CommandLine
+namespace XArch.CommandLine
 {
     public abstract class CommandBase
     {

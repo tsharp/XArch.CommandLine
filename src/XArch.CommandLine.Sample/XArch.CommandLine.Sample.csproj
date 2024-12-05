@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\XArch.PlatformManagement.CommandLine\XArch.PlatformManagement.CommandLine.csproj" />
+    <ProjectReference Include="..\XArch.CommandLine\XArch.CommandLine.csproj" />
   </ItemGroup>
 
 </Project>

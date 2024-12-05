@@ -1,7 +1,7 @@
 ﻿using System;
 using System.CommandLine.Invocation;
 
-namespace XArch.PlatformManagement.CommandLine
+namespace XArch.CommandLine
 {
     public class CommandExecutionContext : IDisposable
     {

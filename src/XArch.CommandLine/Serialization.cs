@@ -1,7 +1,7 @@
 ﻿using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
-namespace XArch.PlatformManagement.CommandLine
+namespace XArch.CommandLine
 {
     internal static class Serialization
     {

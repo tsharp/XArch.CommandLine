@@ -18,6 +18,10 @@
 
     <!-- Don't expose experimental features -->
     <ExposeExperimentalFeatures Condition="'$(ExposeExperimentalFeatures)' == ''">false</ExposeExperimentalFeatures>
+
+    <!-- Use Lock File for Restores -->
+    <!-- https://devblogs.microsoft.com/nuget/enable-repeatable-package-restores-using-a-lock-file/ -->
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <!-- Build Versioning -->

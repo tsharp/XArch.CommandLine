@@ -2,9 +2,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-using XArch.PlatformManagement.CommandLine;
-
-namespace XArch.PlatformManagement.CommandLine.Sample
+namespace XArch.CommandLine.Sample
 {
     internal class Program
     {

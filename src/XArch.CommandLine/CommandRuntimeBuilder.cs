@@ -6,7 +6,7 @@ using System.Reflection;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace XArch.PlatformManagement.CommandLine
+namespace XArch.CommandLine
 {
     public sealed class CommandRuntimeBuilder
     {
@@ -140,7 +140,7 @@ namespace XArch.PlatformManagement.CommandLine
         private void RegisterCommandHandlers()
         {
             // Services and configure commands now ...
-            this.serviceProvider = serviceDescriptors.BuildServiceProvider();
+            serviceProvider = serviceDescriptors.BuildServiceProvider();
 
             foreach (var commandDescriptor in commandDescriptors)
             {

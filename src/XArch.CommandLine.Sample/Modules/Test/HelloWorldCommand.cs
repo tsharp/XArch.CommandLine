@@ -1,6 +1,6 @@
-﻿using XArch.PlatformManagement.CommandLine;
+﻿using XArch.CommandLine;
 
-namespace XArch.PlatformManagement.CommandLine.Sample.Modules.Test
+namespace XArch.CommandLine.Sample.Modules.Test
 {
     [RegisterCommand(command: "hello")]
     internal class HelloWorldCommand : CommandBase

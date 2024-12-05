@@ -1,4 +1,4 @@
-﻿namespace XArch.PlatformManagement.CommandLine
+﻿namespace XArch.CommandLine
 {
     internal class NamespaceContextData
     {
