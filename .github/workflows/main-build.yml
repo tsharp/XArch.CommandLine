@@ -11,7 +11,12 @@ on:
     branches: [ "main", "develop" ]
 
 env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
   DOTNET_VERSION: 8.0.205
+  DOTNET_NOLOGO: true
+  # https://www.meziantou.net/publishing-a-nuget-package-following-best-practices-using-github.htm
+  # https://stackoverflow.com/questions/57889719/how-to-push-nuget-package-in-github-actions
+  NuGetDirectory: ${{ github.workspace }}/nuget
 
 jobs:
 
