@@ -15,23 +15,23 @@ env:
 
 jobs:
 
-  version:
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+  # version:
+  #   permissions:
+  #     contents: write
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v4
+  #     with:
+  #       fetch-depth: 0
 
-    - name: Version
-      uses: huggingface/semver-release-action@latest
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #   - name: Version
+  #     uses: huggingface/semver-release-action@latest
+  #     env:
+  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build:
-    needs: version
+#    needs: version
 #    strategy:
 #      matrix:
 #        configuration: [Debug, Release]
@@ -59,3 +59,12 @@ jobs:
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test --no-restore --configuration Release
+
+    # - name: Push to NuGet.org
+    #   if: github.event_name != 'pull_request' # Skip this step for PRs
+    #   env:
+    #     NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+    #   run: |
+    #     dotnet nuget push ./nupkg/*.nupkg \
+    #       --api-key $NUGET_API_KEY \
+    #       --source https://api.nuget.org/v3/index.json

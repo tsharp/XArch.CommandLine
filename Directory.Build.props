@@ -20,6 +20,9 @@
     <ExposeExperimentalFeatures Condition="'$(ExposeExperimentalFeatures)' == ''">false</ExposeExperimentalFeatures>
   </PropertyGroup>
 
+  <!-- Build Versioning -->
+  <Import Project="$(EnlistmentRoot)\Directory.Version.props" Condition="Exists('$(EnlistmentRoot)\Directory.Version.props')" />
+
   <ItemGroup>
     <SlnGenSolutionItem Include="$(MSBuildThisFileDirectory)Directory.Build.props;
                         $(MSBuildThisFileDirectory)Directory.Build.rsp;
