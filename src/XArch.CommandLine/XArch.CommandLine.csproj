@@ -12,6 +12,9 @@
     <Authors>Travis Sharp</Authors>
     <EnablePackageValidation>true</EnablePackageValidation>
     <ApiCompatRespectInternals>true</ApiCompatRespectInternals>
+    <RepositoryUrl>https://github.com/tsharp/XArch.CommandLine</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <!--<PackRelease>true</PackRelease>-->
     <!--<CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>-->
   </PropertyGroup>
@@ -26,6 +29,7 @@
 
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\"/>
+    <None Include="$(EnlistmentRoot)\LICENSE" Pack="true" PackagePath="\"/>
   </ItemGroup>
   
   <ItemGroup>
