@@ -50,6 +50,29 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
+    - name: Update Version
+      shell: pwsh
+      run: |
+        dotnet tool install --global GitVersion.Tool --version 6.*
+        $gitVersionRaw = (dotnet gitversion -output json -nofetch -config "${{ github.workspace }}/GitVersion.yml" -targetpath "${{ github.workspace }}" -nocache -nonormalize) | Out-String
+        $gitVersion = ConvertFrom-Json $gitVersionRaw
+        $gitVersionRaw
+        $version = "$($gitVersion.MajorMinorPatch)"
+        $semVer = "$($gitVersion.MajorMinorPatch)-rc.$($gitVersion.PreReleaseTag)"
+        Write-Host "Version: $version" -ForegroundColor Cyan
+
+        $projectXml = @"
+        <Project>
+            <PropertyGroup>
+                <AssemblyVersion>$version</AssemblyVersion>
+                <AssemblyFileVersion>$semVer</AssemblyFileVersion>
+                <PackageVersion>$semVer</PackageVersion>
+            </PropertyGroup>
+        </Project>
+        "@
+
+        $projectXml | Out-File -FilePath "${{ github.workspace }}/Directory.Version.props"
+
     - name: Restore Packages
       run: dotnet restore
 
@@ -59,6 +82,20 @@ jobs:
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test --no-restore --configuration Release
+
+    # TEST
+    - name: Sign Binaries ...
+      run: echo Test Sign
+
+    - name: Package Binaries ...
+      run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: nuget
+        if-no-files-found: error
+        retention-days: 7
+        path: ${{ env.NuGetDirectory }}/*.nupkg
 
     # - name: Push to NuGet.org
     #   if: github.event_name != 'pull_request' # Skip this step for PRs
