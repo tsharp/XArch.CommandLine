@@ -102,11 +102,11 @@ jobs:
         retention-days: 7
         path: ${{ env.NuGetDirectory }}/*.nupkg
 
-    # - name: Push to NuGet.org
-    #   if: github.event_name != 'pull_request' # Skip this step for PRs
-    #   env:
-    #     NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-    #   run: |
-    #     dotnet nuget push ./nupkg/*.nupkg \
-    #       --api-key $NUGET_API_KEY \
-    #       --source https://api.nuget.org/v3/index.json
+    - name: Push to NuGet.org
+      if: github.event_name != 'pull_request' # Skip this step for PRs
+      env:
+        NUGET_SECRET: ${{ secrets.NUGET_SECRET }}
+      run: |
+        dotnet nuget push ./nupkg/*.nupkg \
+          --api-key $NUGET_SECRET \
+          --source https://api.nuget.org/v3/index.json
