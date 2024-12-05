@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Generated Files
+*.sln
+
 # User-specific files
 *.rsuser
 *.suo
@@ -396,3 +399,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Build Artifacts
+artifacts/
+
+# msbuild binary logs
+*.binlog

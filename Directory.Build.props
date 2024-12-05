@@ -1,0 +1,40 @@
+<Project>
+  <PropertyGroup>
+    <!-- Give a base reference for the entire repository -->
+    <EnlistmentRoot>$(MSBuildThisFileDirectory.TrimEnd('\\'))</EnlistmentRoot>
+
+    <!-- Use a consistent artifacts path for the entire repository -->
+    <BaseArtifactsPath>$(EnlistmentRoot)\artifacts</BaseArtifactsPath>
+
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+
+    <DefaultItemExcludes>$(DefaultItemExcludes)</DefaultItemExcludes>
+    <Deterministic>true</Deterministic>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+
+    <!-- For code analysis rules -->
+    <!-- <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)/Kuiper.ruleset</CodeAnalysisRuleSet> -->
+
+    <!-- Don't expose experimental features -->
+    <ExposeExperimentalFeatures Condition="'$(ExposeExperimentalFeatures)' == ''">false</ExposeExperimentalFeatures>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SlnGenSolutionItem Include="$(MSBuildThisFileDirectory)Directory.Build.props;
+                        $(MSBuildThisFileDirectory)Directory.Build.rsp;
+                        $(MSBuildThisFileDirectory)Directory.Build.targets;
+                        $(MSBuildThisFileDirectory)Directory.Packages.props;
+                        $(MSBuildThisFileDirectory)dirs.proj;
+                        $(MSBuildThisFileDirectory)global.json;
+                        $(MSBuildThisFileDirectory)nuget.config;
+                        $(MSBuildThisFileDirectory)README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- For code analysis rules -->
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
+  </ItemGroup>
+</Project>

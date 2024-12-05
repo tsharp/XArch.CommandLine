@@ -1,0 +1,61 @@
+name: Build & Test
+
+on:
+  workflow_dispatch:
+  
+  schedule:
+    - cron: '30 6 * * *'
+  push:
+    branches: [ "main", "develop", "next", "next-major" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+env:
+  DOTNET_VERSION: 8.0.205
+
+jobs:
+
+  version:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Version
+      uses: huggingface/semver-release-action@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build:
+    needs: version
+#    strategy:
+#      matrix:
+#        configuration: [Debug, Release]
+
+    runs-on: ubuntu-latest   # For a list of available runner types, refer to
+                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: Restore Packages
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+
+    # Execute all unit tests in the solution
+    - name: Execute unit tests
+      run: dotnet test --no-restore --configuration Release

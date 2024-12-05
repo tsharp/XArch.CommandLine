@@ -1,0 +1,35 @@
+<Project>
+  <!-- https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <RestorePackagesConfig>true</RestorePackagesConfig>
+    <RestoreUseStaticGraphEvaluation>true</RestoreUseStaticGraphEvaluation>
+  </PropertyGroup>
+  
+  <ItemGroup Label="Package Versions used by this repository">
+    <!-- Common Pinned Packages -->
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="[8.0.0,)" />
+    <PackageVersion Include="YamlDotNet" Version="[16.2.1,)" />
+    <PackageVersion Include="System.Text.Json" Version="[8.0.5,)" />
+    <PackageVersion Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+
+    <!-- Testing Libraries -->
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageVersion Include="xunit" Version="2.6.6" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.6" />
+
+    <!-- Others -->
+    <PackageVersion Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="[3.3.4]" />
+    <PackageVersion Include="Microsoft.NETFramework.ReferenceAssemblies" Version="[1.0.3,2.0)" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="[1.1.1,2.0)" />
+    <PackageVersion Include="MinVer" Version="[5.0.0,6.0)" />
+    <PackageVersion Include="StyleCop.Analyzers" Version="[1.1.118,2.0)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- To reference a package in all projects, add it to this list. -->
+    <GlobalPackageReference Include="Microsoft.Build.Artifacts" Version="6.1.10" />
+  </ItemGroup>
+</Project>
