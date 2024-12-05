@@ -106,7 +106,8 @@ jobs:
       if: github.event_name != 'pull_request' # Skip this step for PRs
       env:
         NUGET_SECRET: ${{ secrets.NUGET_SECRET }}
+        NUGET_PATH: ${{ env.NuGetDirectory }}
       run: |
-        dotnet nuget push ./nupkg/*.nupkg \
+        dotnet nuget push $NUGET_PATH/*.nupkg \
           --api-key $NUGET_SECRET \
           --source https://api.nuget.org/v3/index.json
