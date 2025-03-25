@@ -37,7 +37,7 @@ namespace XArch.CommandLine
             var yaml = File.ReadAllText(dataFile);
             var namespaceContextData = yaml.DeserializeFromYaml<NamespaceContextData>();
 
-            return Init<T>(module, namespaceContextData!.Name);
+            return this.Init<T>(module, namespaceContextData!.Name);
         }
 
         public void SetCurrentContext(string module, string name)
@@ -72,14 +72,14 @@ namespace XArch.CommandLine
             {
                 contextData = new T();
 
-                return GetContext<T>();
+                return this.GetContext<T>();
             }
 
             // Deserialize the file
             var yaml = File.ReadAllText(dataFile);
             contextData = yaml.DeserializeFromYaml<T>();
 
-            return GetContext<T>();
+            return this.GetContext<T>();
         }
 
         public T GetContext<T>()

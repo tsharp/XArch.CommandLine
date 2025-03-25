@@ -21,7 +21,7 @@ namespace XArch.CommandLine
 
         internal Command? RegisterCommand(IServiceProvider rootServiceProvider)
         {
-            var attribute = GetType().GetCustomAttribute<RegisterCommandAttribute>(false);
+            var attribute = this.GetType().GetCustomAttribute<RegisterCommandAttribute>(false);
 
             if (attribute == null)
             {
@@ -29,14 +29,14 @@ namespace XArch.CommandLine
             }
 
             Command command = new Command(attribute!.Command, attribute.Description);
-            ConfigureCommand(command);
+            this.ConfigureCommand(command);
             command.SetHandler(async (context) =>
             {
                 using (var scope = rootServiceProvider.CreateAsyncScope())
                 {
                     using (var executionContext = new CommandExecutionContext(scope.ServiceProvider, context))
                     {
-                        await InvokeAsync(executionContext);
+                        await this.InvokeAsync(executionContext);
                     }
                 }
             });

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
-
 using Microsoft.Extensions.DependencyInjection;
+using XArch.CommandLine.PowerShell;
 
 namespace XArch.CommandLine.Sample
 {
@@ -19,6 +19,7 @@ namespace XArch.CommandLine.Sample
 
         private static void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IsolatedPowershellHost>();
         }
     }
 }

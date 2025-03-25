@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net8</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <AssemblyName>xarch-ctl-sample</AssemblyName>
@@ -11,11 +12,14 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" />
     <PackageReference Include="System.CommandLine" />
+    <PackageReference Include="System.Text.Json" />
     <PackageReference Include="YamlDotNet" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\XArch.CommandLine.PowerShell\XArch.CommandLine.PowerShell.csproj" />
     <ProjectReference Include="..\XArch.CommandLine\XArch.CommandLine.csproj" />
   </ItemGroup>
 

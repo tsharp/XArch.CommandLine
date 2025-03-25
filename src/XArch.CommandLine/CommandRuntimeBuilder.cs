@@ -68,10 +68,10 @@ namespace XArch.CommandLine
 
             foreach (var assembly in moduleAssemblies)
             {
-                GenerateAssemblyCommands(runtime.RootCommand, assembly);
+                this.GenerateAssemblyCommands(runtime.RootCommand, assembly);
             }
 
-            RegisterCommandHandlers();
+            this.RegisterCommandHandlers();
 
             return runtime;
         }
@@ -119,12 +119,12 @@ namespace XArch.CommandLine
 
                 if (!string.IsNullOrWhiteSpace(attribute.Module))
                 {
-                    parentCommand = GetOrCreateSubCommand(rootCommand, attribute.Module);
+                    parentCommand = this.GetOrCreateSubCommand(parentCommand, attribute.Module);
                 }
 
                 if (!string.IsNullOrWhiteSpace(attribute.Verb))
                 {
-                    parentCommand = GetOrCreateSubCommand(rootCommand, attribute.Verb);
+                    parentCommand = this.GetOrCreateSubCommand(parentCommand, attribute.Verb);
                 }
 
                 CommandBase instance = (Activator.CreateInstance(@class, new object[] { }) as CommandBase)!;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace XArch.CommandLine
@@ -7,18 +8,19 @@ namespace XArch.CommandLine
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public sealed class RegisterCommandAttribute : Attribute
     {
-        //private readonly string[] ApprovedVerbs = new string[]
-        //{
-        //    "list",
-        //    "create",
-        //    "update",
-        //    "delete",
-        //    "get",
-        //    "set",
-        //    "apply",
-        //    "add",
-        //    "remove"
-        //};
+        private readonly string[] ApprovedVerbs = new string[]
+        {
+            "list",
+            "create",
+            "update",
+            "delete",
+            "get",
+            "set",
+            "apply",
+            "add",
+            "remove",
+            "exec"
+        };
 
         public string Module { get; } = string.Empty;
 
@@ -30,7 +32,7 @@ namespace XArch.CommandLine
 
         public bool IsEnabled { get; } = true;
 
-        public RegisterCommandAttribute(string command, string? description = null, string? module = null, string verb = null, bool isEnabled = true)
+        public RegisterCommandAttribute(string command, string? description = null, string? module = null, string? verb = null, bool isEnabled = true)
         {
             Command = command.ToLowerInvariant();
             Description = description;
@@ -41,10 +43,11 @@ namespace XArch.CommandLine
                 throw new Exception("Command Names can only contain letters and numbers.");
             }
 
-            //if (!ApprovedVerbs.Contains(verb))
-            //{
-            //    throw new Exception("Must be an approved verb.");
-            //}
+            if (!string.IsNullOrWhiteSpace(verb) &&
+                !ApprovedVerbs.Contains(verb))
+            {
+                throw new Exception("Must be an approved verb.");
+            }
 
             if (module != null && (string.IsNullOrWhiteSpace(module) || !IsValidCommandName(module)))
             {
