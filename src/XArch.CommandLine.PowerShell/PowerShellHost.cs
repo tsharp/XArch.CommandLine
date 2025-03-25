@@ -5,11 +5,11 @@ using System.Text.Json;
 
 namespace XArch.CommandLine.PowerShell
 {
-    public class IsolatedPowershellHost : IDisposable
+    public class PowerShellHost : IPowerShellHost
     {
         private readonly System.Management.Automation.PowerShell _powerShell;
 
-        public IsolatedPowershellHost()
+        public PowerShellHost()
         {
             // Initialize a new PowerShell instance
             _powerShell = System.Management.Automation.PowerShell.Create();

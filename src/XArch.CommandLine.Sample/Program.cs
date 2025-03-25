@@ -19,7 +19,7 @@ namespace XArch.CommandLine.Sample
 
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IsolatedPowershellHost>();
+            services.AddScoped<IPowerShellHost, PowerShellHost>();
         }
     }
 }

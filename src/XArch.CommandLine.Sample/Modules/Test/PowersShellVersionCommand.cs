@@ -8,7 +8,7 @@ namespace XArch.CommandLine.Sample.Modules.Test
     {
         protected override Task InvokeAsync(CommandExecutionContext executionContext)
         {
-            IsolatedPowershellHost host = executionContext.Services.GetRequiredService<IsolatedPowershellHost>();
+            IPowerShellHost host = executionContext.Services.GetRequiredService<IPowerShellHost>();
             Console.WriteLine(host.ExecuteCommand("$PSVersionTable"));
 
             return Task.CompletedTask;

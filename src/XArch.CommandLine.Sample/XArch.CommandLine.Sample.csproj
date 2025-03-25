@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\XArch.CommandLine.PowerShell\XArch.CommandLine.PowerShell.csproj" />
+    <ProjectReference Include="..\XArch.CommandLine.PowerShell\XArch.CommandLine.PowerShell.csproj" />
     <ProjectReference Include="..\XArch.CommandLine\XArch.CommandLine.csproj" />
   </ItemGroup>
 
