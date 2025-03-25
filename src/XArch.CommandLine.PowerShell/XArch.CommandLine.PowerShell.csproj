@@ -9,7 +9,6 @@
   <ItemGroup>
     <!--<PackageReference Include="Microsoft.PowerShell.SDK" />-->
     <PackageReference Include="PowerShellStandard.Library" PrivateAssets="all" />
-    <PackageReference Include="System.Runtime.Loader" />
     <PackageReference Include="System.Text.Json" />
   </ItemGroup>
 

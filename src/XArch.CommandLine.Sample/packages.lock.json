@@ -727,7 +727,6 @@
       "xarch.commandline.powershell": {
         "type": "Project",
         "dependencies": {
-          "System.Runtime.Loader": "(, )",
           "System.Text.Json": "[8.0.5, )"
         }
       },
