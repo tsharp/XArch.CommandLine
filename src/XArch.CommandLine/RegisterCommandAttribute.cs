@@ -38,7 +38,8 @@ namespace XArch.CommandLine
             Description = description;
             IsEnabled = isEnabled;
 
-            if (string.IsNullOrWhiteSpace(command) || !IsValidCommandName(command))
+            if (string.IsNullOrWhiteSpace(command) ||
+                !IsValidCommandName(command))
             {
                 throw new Exception("Command Names can only contain letters and numbers.");
             }

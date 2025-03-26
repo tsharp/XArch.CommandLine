@@ -30,11 +30,11 @@ namespace XArch.CommandLine
 
             Command command = new Command(attribute!.Command, attribute.Description);
             this.ConfigureCommand(command);
-            command.SetHandler(async (context) =>
+            command.SetHandler(async (invocationContext) =>
             {
                 using (var scope = rootServiceProvider.CreateAsyncScope())
                 {
-                    using (var executionContext = new CommandExecutionContext(scope.ServiceProvider, context))
+                    using (var executionContext = new CommandExecutionContext(scope.ServiceProvider, invocationContext))
                     {
                         await this.InvokeAsync(executionContext);
                     }
